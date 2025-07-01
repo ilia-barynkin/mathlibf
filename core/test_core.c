@@ -5,14 +5,26 @@ static void test_constrainf();
 static void test_lerpf();
 static void test_modf_positive();
 static void test_wrapf();
+static void test_sqrt_approx();
 
 int main() {
     test_lerpf();
     test_constrainf();
     test_modf_positive();
     test_wrapf();
+    test_sqrt_approx();
 
     return 0;
+}
+
+static void test_sqrt_approx() {
+    assert(FLOAT_EQ(sqrt_approx(0.0f), 0.0f));
+    assert(FLOAT_EQ(sqrt_approx(1.0f), 1.0f));
+    assert(FLOAT_EQ(sqrt_approx(4.0f), 2.0f));
+    assert(FLOAT_EQ(sqrt_approx(9.0f), 3.0f));
+    assert(FLOAT_EQ(sqrt_approx(100.0f), 10.0f));
+    assert(FLOAT_EQ(sqrt_approx(1e-6f), 0.001f));
+    assert(FLOAT_EQ(sqrt_approx(1e6f), 1000.0f));
 }
 
 static void test_wrapf() {

@@ -25,6 +25,7 @@ float lerpf(float a, float b, float t);
 // Wrapping x in a half-opened [min, max) interval.
 // If min == max, returns x without wrapping.
 float wrapf(float x, float min, float max);
+float sqrt_approx(float x);
 
 #ifdef __cplusplus
 }

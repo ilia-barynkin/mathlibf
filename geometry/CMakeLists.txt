@@ -1,5 +1,6 @@
 add_library(matlib_geometry geometry.c)
 add_executable(test_geometry test_geometry.c)
+#target_include_directories(. ../core)
 target_link_libraries(test_geometry mathlib_geometry)
 target_compile_definitions(test_geometry PRIVATE TESTING=1)
 add_test(NAME test_geometry COMMAND test_geometry)
