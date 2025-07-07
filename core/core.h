@@ -8,6 +8,8 @@ extern "C" {
 #define EPSILON 1e-6f
 // Default comparison threshold for FLOAT_EQ.
 #define FLOAT_EQ(a, b) (absf((a)-(b)) < EPSILON)
+#define ABS_ERR(a, b) (absf((a) - (b)))
+#define REL_ERR(a, b) (ABS_ERR(a, b)/(b))
 // Common macros for cross-module usage:
 #define MATHLIB_INLINE static inline
 

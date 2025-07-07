@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(mathlibf C)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
@@ -9,6 +10,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 enable_testing()
 
 add_subdirectory(core)
-#add_subdirectory(geometry)
+add_subdirectory(geometry)
 #add_subdirectory(filter)
 #add_subdirectory(matrix)
