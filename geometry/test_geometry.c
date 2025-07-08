@@ -90,7 +90,7 @@ void test_vec2f_len() {
     float expected = 5.f;
     if (!FLOAT_EQ(result, expected)) {
         float err = REL_ERR(result, expected);
-        printf("test_vec2f_len rel error %f", err);
+        printf("test_vec2f_len rel error %.6f\n", err);
     }
 }
 
@@ -101,7 +101,7 @@ void test_vec2f_norm() {
 
     if (!assert_vec2f_eq(result, expected)) {
         float err = rel_err_vec2f(result, expected);
-        printf("test_vec2f_norm rel error %f", err);
+        printf("test_vec2f_norm rel error %.6f\n", err);
     }
 
     // TODO

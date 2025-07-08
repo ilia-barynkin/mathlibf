@@ -39,11 +39,24 @@ float vec2f_dist(Vec2f a, Vec2f b) {
 }
 
 Vec2f vec2f_rotate(Vec2f v, float angle_rad) {
-    
+    //todo
+    return (Vec2f){
+        .x = 0.f, 
+        .y = 0.f
+    };
 }
 
 // Perpendicular to v rotated by PI/2 CCW
-Vec2f vec2f_perp_ccw(Vec2f v);
+Vec2f vec2f_perp_ccw(Vec2f v) {
+    //todo
+    return (Vec2f){
+        .x = 0.f, 
+        .y = 0.f
+    };
+}
 
 // Angle between [0, PI] between two vectors
-float vec2f_angle_between(Vec2f a, Vec2f b);
+float vec2f_angle_between(Vec2f a, Vec2f b) {
+    //todo
+    return 0.f;
+}

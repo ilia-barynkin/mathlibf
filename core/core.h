@@ -9,7 +9,7 @@ extern "C" {
 // Default comparison threshold for FLOAT_EQ.
 #define FLOAT_EQ(a, b) (absf((a)-(b)) < EPSILON)
 #define ABS_ERR(a, b) (absf((a) - (b)))
-#define REL_ERR(a, b) (ABS_ERR(a, b)/absf(b))
+#define REL_ERR(a, b) (ABS_ERR(a, b) / absf(b))
 // Common macros for cross-module usage:
 #define MATHLIB_INLINE static inline
 
@@ -27,7 +27,9 @@ float lerpf(float a, float b, float t);
 // Wrapping x in a half-opened [min, max) interval.
 // If min == max, returns x without wrapping.
 float wrapf(float x, float min, float max);
-float sqrt_approx(float x);
+float sqrt_approx_newt(float x, int steps);
+#define sqrt_approx(x) sqrt_approx_newt((x), 1) // one step
+#define sqrt_approx_acc(x) sqrt_approx_newt((x), 2) // two steps
 
 #ifdef __cplusplus
 }

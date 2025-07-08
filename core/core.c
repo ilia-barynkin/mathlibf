@@ -38,17 +38,19 @@ float wrapf(float x, float min, float max) {
 typedef union {
     float f; 
     unsigned int u;
-} i_hate_i_t;
+} uf_t;
 
 // TODO: need more everything
-float sqrt_approx(float x) {
-    i_hate_i_t v = *(i_hate_i_t*)(&x);
+float sqrt_approx_newt(float x, int steps) {
+    uf_t v = *(uf_t*)(&x);
 
     unsigned int M = (v.u & MANTISSA_MASK);
 
     // first-time newton approx around 1.6 on Q16 (fixed-point)
     v.u = (v.u >> 23) & 0xFF;
-    M = 72818 + ((M * 5) >> 11); // // magick (arete >= 1)
+    
+    M = 72818 + ((M * 5) >> 11);
+
     M = (v.u & 1) ? (M * 92686) : M; // consider sqrt(2) if exponent is odd
     M = (M * FROM_Q16_to_Q23) & MANTISSA_MASK;
     v.u = ((v.u - EXP_BIAS) >> 1) + EXP_BIAS;

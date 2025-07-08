@@ -1,12 +1,20 @@
 #include "core.h"
 #include <assert.h>
 #include <math.h>
+#include <stdio.h>
 
 static void test_constrainf();
 static void test_lerpf();
 static void test_modf_positive();
 static void test_wrapf();
 static void test_sqrt_approx();
+
+void estimate_float(float result, float expected) {
+    // TODO
+    if (!FLOAT_EQ(result, expected)) {
+        printf("rel error %.6f\n", REL_ERR(result, expected));
+    }
+}
 
 int main() {
     test_lerpf();
@@ -19,17 +27,12 @@ int main() {
 }
 
 static void test_sqrt_approx() {
-    // TODO
-    float af = sqrt_approx(25.f); // M = 
-    float ae = sqrtf(25.f);
-    float err_abs = af - ae;
-    // assert(FLOAT_EQ(sqrt_approx(0.0f), 0.0f));
-    // assert(FLOAT_EQ(sqrt_approx(1.0f), 1.0f));
-    // assert(FLOAT_EQ(sqrt_approx(4.0f), 2.0f));
-    // assert(FLOAT_EQ(sqrt_approx(9.0f), 3.0f));
-    // assert(FLOAT_EQ(sqrt_approx(100.0f), 10.0f));
-    // assert(FLOAT_EQ(sqrt_approx(1e-6f), 0.001f));
-    // assert(FLOAT_EQ(sqrt_approx(1e6f), 1000.0f));
+    printf("1-step sqrt newton approx\n");
+    estimate_float(sqrt_approx(25.f), sqrtf(25.f));
+    estimate_float(sqrt_approx(625.f), sqrtf(625.f));
+    printf("2-step sqrt newton approx\n");
+    estimate_float(sqrt_approx_acc(25.f), sqrtf(25.f));
+    estimate_float(sqrt_approx_acc(625.f), sqrtf(625.f));
 }
 
 static void test_wrapf() {
